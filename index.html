@@ -12,32 +12,37 @@
 <div class="overlay"></div>
 
 <div class="content">
+  <!-- Left Section -->
   <div class="text-section">
     <h1><span>VALMA</span>track</h1>
     <p>ValmaTrack is an attendance tracking system powered by RFID technology. When a student scans their ID, the system instantly records attendance, notifies parents, and logs whether the student is on time or late.</p>
     <p>This provides an efficient and reliable way to record the exact time of student arrivals. This system promotes security, accountability, and punctuality among students.</p>
   </div>
 
+  <!-- Right Section -->
   <div class="card-container">
     <button class="arrow-btn" id="arrow-btn" onclick="flipCard()">⮌</button>
     <div class="card" id="auth-card">
+      <!-- Login -->
       <div class="card-face card-front">
         <h2>Log In</h2>
         <form id="loginForm">
           <input type="email" placeholder="Email" required>
           <input type="password" placeholder="Password" required>
           <button type="submit">LOGIN</button>
-          <div class="bubble-msg" id="login-bubble">Please fill all fields</div>
+          <div class="bubble-msg" id="login-bubble">Please fill out all fields</div>
         </form>
       </div>
+
+      <!-- Sign Up Role Selection -->
       <div class="card-face card-back">
-  <h2>Sign Up As</h2>
-  <div class="role-buttons">
-    <button class="student" onclick="flipCard(); signupRole('student')">Student</button>
-    <button class="parent" onclick="flipCard(); signupRole('parent')">Parent</button>
-    <button class="admin" onclick="flipCard(); signupRole('admin')">Admin</button>
-  </div>
-</div>
+        <h2>Sign Up As</h2>
+        <div class="role-buttons">
+          <button class="student" onclick="flipCard(); signupRole('student')">Student</button>
+          <button class="parent" onclick="flipCard(); signupRole('parent')">Parent</button>
+          <button class="admin" onclick="flipCard(); signupRole('admin')">Admin</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -46,6 +51,7 @@
   S.Y. 2025-2026 ValmaTrack | <a href="#">About Us</a> | <a href="#">Contact</a>
 </footer>
 
+<!-- Popups -->
 <div class="overlay-popup" id="popup">
   <div class="popup-box" id="popup-box"></div>
 </div>
@@ -53,4 +59,64 @@
 <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ValmaTrack</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="background"></div>
+<div class="overlay"></div>
+
+<div class="content">
+  <!-- Left Section -->
+  <div class="text-section">
+    <h1><span>VALMA</span>track</h1>
+    <p>ValmaTrack is an attendance tracking system powered by RFID technology. When a student scans their ID, the system instantly records attendance, notifies parents, and logs whether the student is on time or late.</p>
+    <p>This provides an efficient and reliable way to record the exact time of student arrivals. This system promotes security, accountability, and punctuality among students.</p>
+  </div>
+
+  <!-- Right Section -->
+  <div class="card-container">
+    <button class="arrow-btn" id="arrow-btn" onclick="flipCard()">⮌</button>
+    <div class="card" id="auth-card">
+      <!-- Login -->
+      <div class="card-face card-front">
+        <h2>Log In</h2>
+        <form id="loginForm">
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">LOGIN</button>
+          <div class="bubble-msg" id="login-bubble">Please fill out all fields</div>
+        </form>
+      </div>
+
+      <!-- Sign Up Role Selection -->
+      <div class="card-face card-back">
+        <h2>Sign Up As</h2>
+        <div class="role-buttons">
+          <button class="student" onclick="flipCard(); signupRole('student')">Student</button>
+          <button class="parent" onclick="flipCard(); signupRole('parent')">Parent</button>
+          <button class="admin" onclick="flipCard(); signupRole('admin')">Admin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  S.Y. 2025-2026 ValmaTrack | <a href="#">About Us</a> | <a href="#">Contact</a>
+</footer>
+
+<!-- Popups -->
+<div class="overlay-popup" id="popup">
+  <div class="popup-box" id="popup-box"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
