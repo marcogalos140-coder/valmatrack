@@ -58,7 +58,7 @@ footer { background:#800000; color:#fff; text-align:center; padding:12px; font-s
 footer a { color:#fff; text-decoration:none; margin:0 5px; }
 footer a:hover { text-decoration:underline; }
 
-/* ----------------- MOBILE ----------------- */
+/* MOBILE RESPONSIVE */
 @media (max-width:900px) {
   .content { flex-direction:column; align-items:center; padding:20px; gap:30px; }
   .text-section { width:90%; max-width:none; text-align:center; }
