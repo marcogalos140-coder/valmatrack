@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background and overlay -->
+
+  <!-- Background -->
   <div class="background"></div>
   <div class="overlay"></div>
 
-  <!-- Main content -->
+  <!-- Main Content -->
   <div class="content">
-    <!-- Text section -->
+    <!-- Left Text -->
     <div class="text-section">
       <h1><span>VALMA</span>track</h1>
       <p>
@@ -23,15 +24,15 @@
       </p>
       <p>
         This provides an efficient and reliable way to record the exact time of student 
-        arrivals. This system not only automates tracking but also promotes security,
-        accountability, and punctuality among students.
+        arrivals. This system promotes security, accountability, and punctuality among students.
       </p>
     </div>
 
-    <!-- Card section -->
+    <!-- Right Card -->
     <div class="card-container">
       <button class="arrow-btn" id="arrow-btn" onclick="flipCard()">⮌</button>
       <div class="card" id="auth-card">
+
         <!-- Login Face -->
         <div class="card-face card-front">
           <h2>Log In</h2>
@@ -52,6 +53,7 @@
             <button class="admin" onclick="signupRole('admin')">Admin</button>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -61,13 +63,15 @@
     S.Y. 2025-2026 ValmaTrack | <a href="#">About Us</a> | <a href="#">Contact</a>
   </footer>
 
-  <!-- Popups -->
+  <!-- Overlay Popup -->
   <div class="overlay-popup" id="popup">
     <div class="popup-box" id="popup-box">
-      <!-- Popup content dynamically inserted by JS -->
+      <!-- JS will inject popup content -->
     </div>
   </div>
 
+  <!-- JS -->
   <script src="script.js"></script>
+
 </body>
 </html>
