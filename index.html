@@ -31,13 +31,13 @@
         </form>
       </div>
       <div class="card-face card-back">
-        <h2>Sign Up As</h2>
-        <div class="role-buttons">
-          <button class="student" onclick="signupRole('student')">Student</button>
-          <button class="parent" onclick="signupRole('parent')">Parent</button>
-          <button class="admin" onclick="signupRole('admin')">Admin</button>
-        </div>
-      </div>
+  <h2>Sign Up As</h2>
+  <div class="role-buttons">
+    <button class="student" onclick="flipCard(); signupRole('student')">Student</button>
+    <button class="parent" onclick="flipCard(); signupRole('parent')">Parent</button>
+    <button class="admin" onclick="flipCard(); signupRole('admin')">Admin</button>
+  </div>
+</div>
     </div>
   </div>
 </div>
@@ -53,3 +53,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
