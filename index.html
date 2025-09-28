@@ -1,54 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ValmaTrack</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ValmaTrack</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Background and overlay -->
+  <div class="background"></div>
+  <div class="overlay"></div>
 
-<div class="background"></div>
-<div class="overlay"></div>
+  <!-- Main content -->
+  <div class="content">
+    <!-- Text section -->
+    <div class="text-section">
+      <h1><span>VALMA</span>track</h1>
+      <p>
+        ValmaTrack is an attendance tracking system powered by RFID technology.
+        When a student scans their ID, the system instantly records attendance,
+        notifies parents, and logs whether the student is on time or late.
+      </p>
+      <p>
+        This provides an efficient and reliable way to record the exact time of student 
+        arrivals. This system not only automates tracking but also promotes security,
+        accountability, and punctuality among students.
+      </p>
+    </div>
 
-<div class="content">
-  <div class="text-section">
-    <h1><span>VALMA</span>track</h1>
-    <p>ValmaTrack is an attendance tracking system powered by RFID technology.</p>
-    <p>Automates attendance, notifies parents, and promotes punctuality and security.</p>
-  </div>
+    <!-- Card section -->
+    <div class="card-container">
+      <button class="arrow-btn" id="arrow-btn" onclick="flipCard()">⮌</button>
+      <div class="card" id="auth-card">
+        <!-- Login Face -->
+        <div class="card-face card-front">
+          <h2>Log In</h2>
+          <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">LOGIN</button>
+            <div class="bubble-msg" id="login-bubble">Please fill all fields</div>
+          </form>
+        </div>
 
-  <div class="card-container">
-    <button class="arrow-btn" id="arrow-btn" onclick="flipCard()">⮌</button>
-    <div class="card" id="auth-card">
-      <div class="card-face card-front">
-        <h2>Log In</h2>
-        <form id="loginForm" onsubmit="return submitLogin(event)">
-          <input class="card-input" type="email" id="loginEmail" placeholder="Email" required>
-          <input class="card-input" type="password" id="loginPassword" placeholder="Password" required>
-          <button type="submit">LOGIN</button>
-        </form>
-      </div>
-
-      <div class="card-face card-back">
-        <div class="role-buttons">
-          <button class="student" onclick="startStudentSignup()">Student</button>
-          <button class="parent" onclick="startParentSignup()">Parent</button>
-          <button class="admin" onclick="startAdminSignup()">Admin</button>
+        <!-- Sign Up Face -->
+        <div class="card-face card-back">
+          <h2>Sign Up As</h2>
+          <div class="role-buttons">
+            <button class="student" onclick="signupRole('student')">Student</button>
+            <button class="parent" onclick="signupRole('parent')">Parent</button>
+            <button class="admin" onclick="signupRole('admin')">Admin</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="overlay-popup" id="popup">
-  <div class="popup-box" id="popupBox"></div>
-</div>
+  <!-- Footer -->
+  <footer>
+    S.Y. 2025-2026 ValmaTrack | <a href="#">About Us</a> | <a href="#">Contact</a>
+  </footer>
 
-<footer>
-  S.Y. 2025-2026 ValmaTrack | <a href="#">About Us</a> | <a href="#">Contact</a>
-</footer>
+  <!-- Popups -->
+  <div class="overlay-popup" id="popup">
+    <div class="popup-box" id="popup-box">
+      <!-- Popup content dynamically inserted by JS -->
+    </div>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
