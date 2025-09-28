@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset and main styles */
 * {
   margin: 0;
   padding: 0;
@@ -16,10 +16,8 @@ body {
 
 .background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: url('background.jpg') no-repeat center/cover;
   filter: blur(5px) brightness(0.8);
   z-index: -2;
@@ -27,10 +25,8 @@ body {
 
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.35);
   z-index: -1;
 }
@@ -68,10 +64,13 @@ body {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
+/* Card container */
 .card-container {
   flex: 0.6;
   perspective: 1200px;
   position: relative;
+  width: 100%;
+  max-width: 400px; /* limits card size on large screens */
 }
 
 .arrow-btn {
@@ -83,8 +82,7 @@ body {
   color: #000;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 40px; height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,6 +154,7 @@ body {
   gap: 20px;
 }
 
+/* Role buttons */
 .role-buttons {
   display: flex;
   flex-direction: column;
@@ -178,6 +177,7 @@ body {
 .role-buttons .parent:hover { background: #2196f3; }
 .role-buttons .admin:hover { background: maroon; }
 
+/* Popups */
 .overlay-popup {
   position: fixed;
   top:0; left:0; width:100%; height:100%;
@@ -204,9 +204,12 @@ body {
 .popup-box p { margin-bottom: 20px; }
 .popup-box button { padding: 12px 20px; margin: 5px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s; }
 .popup-box a { color: #ffeb99; text-decoration: underline; }
+
+/* Email/Pin input */
 .input-group { display:flex; gap:10px; justify-content:center; margin-bottom:15px; }
 .input-group input { width:40px; height:40px; text-align:center; font-size:1.2rem; border-radius:8px; border:none; outline:none; }
 
+/* Bubble message */
 .bubble-msg {
   position: absolute;
   bottom:-30px;
@@ -226,6 +229,7 @@ body {
   100%{ transform:translateX(-50%) scale(1); opacity:1; }
 }
 
+/* Footer */
 footer {
   background: #800000;
   color: #fff;
@@ -243,7 +247,44 @@ footer a {
 
 footer a:hover { text-decoration: underline; }
 
-@media(max-width:900px){
-  .content{ flex-direction: column; text-align: center; }
-  .text-section h1{ font-size: 2rem; }
+/* ----------------- MOBILE FRIENDLY ----------------- */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .text-section h1 { font-size: 2rem; }
+  .text-section p { font-size: 0.9rem; line-height: 1.4; }
+
+  .card-container {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .card-face {
+    padding: 25px 20px;
+    min-height: 380px;
+  }
+
+  .card-face input,
+  .card-input {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .card-face button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .popup-box { width: 90%; padding: 25px 20px; }
+
+  .input-group input { width: 35px; height: 35px; font-size: 1rem; }
+
+  .bubble-msg { font-size: 0.85rem; }
+
+  .arrow-btn { top: -25px; width: 35px; height: 35px; font-size: 18px; }
 }
