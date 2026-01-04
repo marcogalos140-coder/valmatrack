@@ -79,8 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ================================
-   LOGIN HANDLER
-================================ */
+  /* LOGIN HANDLER */
 document.getElementById("loginForm").addEventListener("submit", e => {
   e.preventDefault();
 
@@ -88,23 +87,22 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   const passwordInput = document.getElementById("loginPassword");
   const bubble = document.getElementById("login-bubble");
 
-  bubble.style.display = "none";
-
   if (!select.value || !passwordInput.value) {
+    bubble.textContent = "Please fill all fields";
     bubble.style.display = "block";
     return;
   }
 
-  const student = students.find(s => s.value === select.value);
-  const enteredPassword = passwordInput.value.trim().toUpperCase();
+  const password = passwordInput.value.trim().toUpperCase();
+  const student = students.find(s => s.folder === select.value);
 
-  if (!student || enteredPassword !== student.password) {
+  if (!student || student.password !== password) {
+    bubble.textContent = "Please fill all fields";
     bubble.style.display = "block";
     return;
   }
 
-  // ✅ FINAL WORKING PATH
-// Navigate relative path for local files
-window.location.href = `student/${student.value}/studentHome.html`;
-
+  // ✅ Navigate to the student's folder inside current directory
+  window.location.href = `${student.folder}/studentHome.html`;
 });
+
