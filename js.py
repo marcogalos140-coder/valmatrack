@@ -1,1 +1,0 @@
-print("miss na kita")
