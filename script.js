@@ -72,14 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   students.forEach(s => {
     const option = document.createElement("option");
-    option.value = s.value;        // SAFE folder
-    option.textContent = s.label;  // Pretty name
+    option.value = s.value;        // folder name
+    option.textContent = s.label;  // display name
     select.appendChild(option);
   });
 });
 
 /* ================================
-  /* LOGIN HANDLER */
+   LOGIN HANDLER
+================================ */
 document.getElementById("loginForm").addEventListener("submit", e => {
   e.preventDefault();
 
@@ -94,7 +95,7 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   }
 
   const password = passwordInput.value.trim().toUpperCase();
-  const student = students.find(s => s.folder === select.value);
+  const student = students.find(s => s.value === select.value); // FIXED
 
   if (!student || student.password !== password) {
     bubble.textContent = "Please fill all fields";
@@ -102,7 +103,6 @@ document.getElementById("loginForm").addEventListener("submit", e => {
     return;
   }
 
-  // ✅ Navigate to the student's folder inside current directory
-  window.location.href = `${student.folder}/studentHome.html`;
+  // ✅ Navigate to student's folder in current directory
+  window.location.href = `${student.value}/studentHome.html`;
 });
-
