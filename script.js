@@ -104,6 +104,8 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   }
 
   // ✅ Navigate to student's folder in current directory
-  window.location.href = 'student/${student.value}/studentHome.html`;
+  window.location.href = `student/${student.value}/studentHome.html`
+;
 });
+
 
