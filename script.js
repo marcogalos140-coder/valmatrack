@@ -35,7 +35,7 @@ const students = [
   { value: "ENCARNACION_RALPH_JONATHAN_S", label: "ENCARNACION, RALPH JONATHAN S.", password: "SEVILLE" },
   { value: "GACIAS_ANGELO_R", label: "GACIAS, ANGELO R.", password: "RODRIGUEZ" },
   { value: "GALOSMO_GIOVANNI_MARCO_F", label: "GALOSMO, GIOVANNI MARCO F.", password: "FRIAS" },
-  { value: "GUERRA_GABRIEL_XIAN_D", label: "GUERRA, GABRIEL XIAN D.", password: "DE LEON" },
+  { value: "GUERRA_GABRIEL_XIAN_D", label: "GUERRA, GABRIEL XIAN D.", password: "DE LION" },
   { value: "MOLINA_JOHNDEL_CHRISTIAN_B", label: "MOLINA, JOHNDEL CHRISTIAN B.", password: "BALUNCIO" },
   { value: "PARAGAS_GUILBERT_ANDREI_B", label: "PARAGAS, GUILBERT ANDREI B.", password: "BAETIONG" },
   { value: "RAMOS_SEAN_LENNARD_O", label: "RAMOS, SEAN LENNARD O.", password: "ORLANDA" },
@@ -107,5 +107,6 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   window.location.href = `student/${student.value}/studentHome.html`
 ;
 });
+
 
 
