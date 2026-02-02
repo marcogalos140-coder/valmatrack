@@ -14,6 +14,20 @@ body {
     color: #fff;
 }
 
+/* Add this to your studentStyle.css */
+
+.download-link {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.download-icon {
+    font-size: 24px;
+}
+
 /* ========================================
    BACKGROUND
 ======================================== */
@@ -1067,4 +1081,5 @@ body {
     .divider {
         display: none;
     }
+
 }
