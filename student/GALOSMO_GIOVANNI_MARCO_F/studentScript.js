@@ -109,7 +109,7 @@ function initializePage() {
     initializeSearch();
     
     // Example: Set streak to 15 days (you would fetch this from backend)
-    const currentStreak = 9; // This should come from your backend/database
+    const currentStreak = 0; // This should come from your backend/database
     updateStreakDisplay(currentStreak);
 }
 
@@ -177,11 +177,11 @@ function generateAttendanceRecords() {
     if (!container) return;
     
     const records = [
-        { day: 1, weekday: 'Mon', timeIn: '6:19 AM', timeOut: '3:15 PM', totalHours: '8h 56m' },
-        { day: 2, weekday: 'Tue', timeIn: '6:53 AM', timeOut: '4:15 PM', totalHours: '9h 22m' },
-        { day: 3, weekday: 'Wed', timeIn: '6:49 AM', timeOut: '4:15 PM', totalHours: '9h 26m' },
-        { day: 4, weekday: 'Thu', timeIn: '6:52 AM', timeOut: '4:00 PM', totalHours: '9h 08m' },
-        { day: 5, weekday: 'Fri', timeIn: '6:49 AM', timeOut: '4:00 PM', totalHours: '9h 11m' }
+        { day: 1, weekday: 'Mon', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
+        { day: 2, weekday: 'Tue', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
+        { day: 3, weekday: 'Wed', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
+        { day: 4, weekday: 'Thu', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
+        { day: 5, weekday: 'Fri', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' }
     ];
     
     container.innerHTML = '';
@@ -241,7 +241,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 function updateStatusCards() {
-    const onTime = 9;
+    const onTime = 0;
     const late = 0;
     const absent = 0;
     const excused = 0;
@@ -273,7 +273,7 @@ function generateCalendarGrid() {
 
     tbody.innerHTML = '';
 
-    const totalDays = 31; // December
+    const totalDays = 28; // December
     let dayCounter = 1;
 
     for (let week = 0; week < 7; week++) {
@@ -287,16 +287,16 @@ function generateCalendarGrid() {
 
                 // Highlight Dec 1–12
                 if (dayCounter >= 1 && dayCounter <= 12) {
-                    if (dayCounter === 6 || dayCounter === 7) {
-                        cell.classList.add('no-box'); // Dec 6, 7 are no classes
+                    if (dayCounter === 6 || dayCounter === 7 || dayCounter === 8) {
+                        cell.classList.add('white'); // Dec 6, 7, 8 are no classes
                         cell.title = 'No Class';
                     } 
-                    if (dayCounter === 3 || dayCounter === 8 || dayCounter === 10) {
-                        cell.classList.add('on-time-box'); // Dec 3, 8, and 10 are late
+                    if (dayCounter === 3 || dayCounter === 10 || dayCounter === 12) {
+                        cell.classList.add('white'); // Dec 3, 10, and 12 are on time 
                         cell.title = 'On Time';
                     }
                     else {
-                        cell.classList.add('on-time-box'); // Others are on time
+                        cell.classList.add('white'); // Others are on time
                         cell.title = 'On Time';
                     }
                 }
@@ -320,15 +320,15 @@ function generateCalendarRecords() {
     // December 1–9
     for (let day = 1; day <= 12; day++) {
         records.push({
-            date: `December ${day}:`,
-            time: day === 3 || day === 8 || day === 10 ? 'On Time' : day === 6 || day === 7 ? 'No Class' : 'On Time'
+            date: `February ${day}:`,
+            time: day === 3 || day === 10 || day === 12 ? '———' : day === 6 || day === 7 || day === 8 ? '———' : '———'
         });
     }
 
     // Remaining days (13–31) as placeholders
     for (let day = 13; day <= 31; day++) {
         records.push({
-            date: `December ${day}:`,
+            date: `February ${day}:`,
             time: '———'
         });
     }
