@@ -58,7 +58,8 @@ const students = [
   { value: "SEDAVIA_SABRINA_ANNIKA_P", label: "SEDAVIA, SABRINA ANNIKA P.", password: "PANGILINAN" },
   { value: "TUGADE_HANNAH_SOPHIA_B", label: "TUGADE, HANNAH SOPHIA B.", password: "BARCEL" },
   { value: "UMARAN_MARY_SIOUXSIEROSE_P", label: "UMARAN, MARY SIOUXSIEROSE P.", password: "PEREZ" },
-  { value: "VILLANUEVA_RINA_CHERICA_M", label: "VILLANUEVA, RINA CHERICA M.", password: "MENDIOLA" }
+  { value: "VILLANUEVA_RINA_CHERICA_M", label: "VILLANUEVA, RINA CHERICA M.", password: "MENDIOLA" },
+  { value: "demo", label: "demo", password: "demo" }
 ];
 
 /* ================================
@@ -107,6 +108,7 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   window.location.href = `student/${student.value}/studentHome.html`
 ;
 });
+
 
 
 
