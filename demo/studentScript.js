@@ -187,9 +187,9 @@ const getCurrentPHTime = () => {
 
     const records = [
         { day: 1, weekday: 'Mon', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
-       { day: 2, weekday: 'Tue', timeIn: getCurrentPHTime(), timeOut: '04:15 PM', totalHours: '6 hrs 15 mins' },
+       { day: 2, weekday: 'Tue', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
        { day: 3, weekday: 'Wed', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
-        { day: 4, weekday: 'Thu', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
+        { day: 4, weekday: 'Thu',  timeIn: getCurrentPHTime(), timeOut: '04:15 PM', totalHours: '6 hrs 15 mins' },
         { day: 5, weekday: 'Fri', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' }
     ];
     
@@ -300,7 +300,7 @@ function generateCalendarGrid() {
                         cell.classList.add('white'); // Dec 6, 7, 8 are no classes
                         cell.title = 'No Class';
                     } 
-                    if (dayCounter === 2) {
+                    if (dayCounter === 26) {
                         cell.classList.add('late-box'); // Dec 2 is on time
                         cell.title = 'On Time';
                     }
@@ -330,7 +330,7 @@ function generateCalendarRecords() {
     for (let day = 1; day <= 12; day++) {
         records.push({
             date: `February ${day}:`,
-            time: day === 2? 'Late' : day === 6 || day === 7 || day === 8 ? '———' : '———'
+            time: day === 26? 'Late' : day === 6 || day === 7 || day === 8 ? '———' : '———'
         });
     }
 
@@ -696,4 +696,5 @@ setTimeout(() => {
 }, 2000);
 
 */
+
 
