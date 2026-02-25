@@ -326,13 +326,16 @@ function generateCalendarRecords() {
 
     const records = [];
 
-    // December 1–9
-    for (let day = 1; day <= 12; day++) {
+    // February 1–31
+    for (let day = 1; day <= 31; day++) {
         records.push({
             date: `February ${day}:`,
-            time: day === 26? 'Late' : day === 6 || day === 7 || day === 8 ? '———' : '———'
+            time: day === 26 ? 'Late' : '———'
         });
     }
+
+    console.log(records); // optional, for testing
+}
 
     // Remaining days (13–31) as placeholders
     for (let day = 13; day <= 31; day++) {
@@ -696,5 +699,6 @@ setTimeout(() => {
 }, 2000);
 
 */
+
 
 
