@@ -175,12 +175,13 @@ function initializeHomePage() {
 function generateAttendanceRecords() {
     const container = document.getElementById('attendanceRecords');
     if (!container) return;
-    const currentDate = new Date();
+    const hours = currentDate.getHours();         // 0-23
+const minutes = currentDate.getMinutes(); 
     const records = [
         { day: 1, weekday: 'Mon', timeIn: '-', timeOut: '-', totalHours: '-' },
         { day: 2, weekday: 'Tue', timeIn: '-', timeOut: '-', totalHours: '-' },
         { day: 3, weekday: 'Wed', timeIn: '-', timeOut: '-', totalHours: '-' },
-        { day: 4, weekday: 'Thu', timeIn: currentDate, timeOut: '4:00 PM', totalHours: '1h 55m' },
+        { day: 4, weekday: 'Thu', timeIn: hours '+' minutes , timeOut: '4:00 PM', totalHours: '1h 55m' },
         { day: 5, weekday: 'Fri', timeIn: '-', timeOut: '-', totalHours: '-' }
     ];
     
@@ -548,4 +549,5 @@ setTimeout(() => {
     setTimeout(() => updateStreakDisplay(80), 5000); // Violet
 }, 2000);
 */
+
 
