@@ -109,7 +109,7 @@ function initializePage() {
     initializeSearch();
     
     // Example: Set streak to 15 days (you would fetch this from backend)
-    const currentStreak = 0; // This should come from your backend/database
+    const currentStreak = 9; // This should come from your backend/database
     updateStreakDisplay(currentStreak);
 }
 
@@ -176,21 +176,12 @@ function generateAttendanceRecords() {
     const container = document.getElementById('attendanceRecords');
     if (!container) return;
     
-const getCurrentPHTime = () => {
-    return new Date().toLocaleTimeString('en-PH', { 
-        timeZone: 'Asia/Manila',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-    });
-};
-
     const records = [
-        { day: 1, weekday: 'Mon', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
-       { day: 2, weekday: 'Tue', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
-       { day: 3, weekday: 'Wed', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' },
-        { day: 4, weekday: 'Thu',  timeIn: getCurrentPHTime(), timeOut: '04:15 PM', totalHours: '6 hrs 15 mins' },
-        { day: 5, weekday: 'Fri', timeIn: 'N/A', timeOut: 'N/A', totalHours: 'N/A' }
+        { day: 1, weekday: 'Mon', timeIn: '6:19 AM', timeOut: '3:15 PM', totalHours: '8h 56m' },
+        { day: 2, weekday: 'Tue', timeIn: '6:53 AM', timeOut: '4:15 PM', totalHours: '9h 22m' },
+        { day: 3, weekday: 'Wed', timeIn: '6:49 AM', timeOut: '4:15 PM', totalHours: '9h 26m' },
+        { day: 4, weekday: 'Thu', timeIn: '6:52 AM', timeOut: '4:00 PM', totalHours: '9h 08m' },
+        { day: 5, weekday: 'Fri', timeIn: '6:49 AM', timeOut: '4:00 PM', totalHours: '9h 11m' }
     ];
     
     container.innerHTML = '';
@@ -250,8 +241,8 @@ style.textContent = `
 document.head.appendChild(style);
 
 function updateStatusCards() {
-    const onTime = 0;
-    const late = 1;
+    const onTime = 9;
+    const late = 0;
     const absent = 0;
     const excused = 0;
 
@@ -282,7 +273,7 @@ function generateCalendarGrid() {
 
     tbody.innerHTML = '';
 
-    const totalDays = 28; // December
+    const totalDays = 31; // December
     let dayCounter = 1;
 
     for (let week = 0; week < 7; week++) {
@@ -297,15 +288,15 @@ function generateCalendarGrid() {
                 // Highlight Dec 1–12
                 if (dayCounter >= 1 && dayCounter <= 12) {
                     if (dayCounter === 6 || dayCounter === 7 || dayCounter === 8) {
-                        cell.classList.add('white'); // Dec 6, 7, 8 are no classes
+                        cell.classList.add('no-box'); // Dec 6, 7, 8 are no classes
                         cell.title = 'No Class';
                     } 
-                    if (dayCounter === 26) {
-                        cell.classList.add('late-box'); // Dec 2 is on time
+                    if (dayCounter === 3 || dayCounter === 10 || dayCounter === 12) {
+                        cell.classList.add('on-time-box'); // Dec 3, 10, and 12 are late
                         cell.title = 'On Time';
                     }
                     else {
-                        cell.classList.add('white'); // Others are on time
+                        cell.classList.add('on-time-box'); // Others are on time
                         cell.title = 'On Time';
                     }
                 }
@@ -320,27 +311,24 @@ function generateCalendarGrid() {
     }
 }
 
- // December 1–9
+function generateCalendarRecords() {
+    const container = document.getElementById('recordsList');
+    if (!container) return;
+
+    const records = [];
+
+    // December 1–9
     for (let day = 1; day <= 12; day++) {
-    // February 1–31
-    for (let day = 1; day <= 31; day++) {
         records.push({
-            date: `February ${day}:`,
-            time: day === 26? 'Late' : day === 6 || day === 7 || day === 8 ? '———' : '———'
-            time: day === 26 ? 'Late' : '———'
+            date: `December ${day}:`,
+            time: day === 3 || day === 10 || day === 12 ? 'On Time' : day === 6 || day === 7 || day === 8 ? 'No Class' : 'On Time'
         });
     }
-
-    console.log(records); // optional, for testing
-}
-
-    console.log(records); // optional, for testing
-}
 
     // Remaining days (13–31) as placeholders
     for (let day = 13; day <= 31; day++) {
         records.push({
-            date: `February ${day}:`,
+            date: `December ${day}:`,
             time: '———'
         });
     }
@@ -362,7 +350,6 @@ function generateCalendarGrid() {
         container.appendChild(item);
     });
 }
-
 // ========================================
 // SETTINGS PAGE
 // ========================================
@@ -546,143 +533,6 @@ window.addEventListener('error', function(e) {
     console.error('An error occurred:', e.error);
 });
 
-
-
-// Add this to your studentScript.js
-
-function downloadAttendancePDF() {
-    // Get current date
-    const currentDate = new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    }).toUpperCase();
-
-    // Get attendance counts (you'll need to get these from your actual data)
-    const onTimeCount = document.getElementById('onTimeCount')?.textContent || '0';
-    const lateCount = document.getElementById('lateCount')?.textContent || '1';
-    const absentCount = document.getElementById('absentCount')?.textContent || '0';
-    const excusedCount = document.getElementById('excusedCount')?.textContent || '0';
-
-    // Create a new window for printing
-    const printWindow = window.open('', '_blank');
-    
-    printWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Attendance Summary</title>
-            <style>
-                @page {
-                    margin: 40px;
-                }
-                body {
-                    font-family: 'Arial', sans-serif;
-                    padding: 60px;
-                    background: white;
-                    color: #000;
-                }
-                .header {
-                    text-align: center;
-                    margin-bottom: 50px;
-                    border-bottom: 3px solid #333;
-                    padding-bottom: 20px;
-                }
-                .header h1 {
-                    font-size: 36px;
-                    font-weight: bold;
-                    letter-spacing: 2px;
-                    margin: 0 0 15px 0;
-                    color: #1a1a1a;
-                }
-                .header .date {
-                    font-size: 18px;
-                    color: #555;
-                    font-weight: 600;
-                }
-                .summary-content {
-                    margin-top: 40px;
-                }
-                .summary-item {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 20px 30px;
-                    margin: 15px 0;
-                    border: 2px solid #e0e0e0;
-                    border-radius: 8px;
-                    background: #f9f9f9;
-                }
-                .summary-item .label {
-                    font-size: 20px;
-                    font-weight: 600;
-                    color: #333;
-                }
-                .summary-item .value {
-                    font-size: 24px;
-                    font-weight: bold;
-                    color: #1a1a1a;
-                }
-                .on-time { border-left: 6px solid #4CAF50; }
-                .late { border-left: 6px solid #FFC107; }
-                .absent { border-left: 6px solid #F44336; }
-                .excused { border-left: 6px solid #2196F3; }
-                .footer {
-                    margin-top: 60px;
-                    text-align: center;
-                    font-size: 14px;
-                    color: #888;
-                    border-top: 2px solid #e0e0e0;
-                    padding-top: 20px;
-                }
-                @media print {
-                    body {
-                        padding: 20px;
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <h1>ATTENDANCE SUMMARY</h1>
-                <div class="date">DATE: ${currentDate}</div>
-            </div>
-            
-            <div class="summary-content">
-                <div class="summary-item on-time">
-                    <span class="label">TOTAL NUMBER OF ON-TIME</span>
-                    <span class="value">${onTimeCount}</span>
-                </div>
-                
-                <div class="summary-item late">
-                    <span class="label">TOTAL NUMBER OF LATE</span>
-                    <span class="value">${lateCount}</span>
-                </div>
-                
-                <div class="summary-item absent">
-                    <span class="label">TOTAL NUMBER OF ABSENCES</span>
-                    <span class="value">${absentCount}</span>
-                </div>
-                
-                <div class="summary-item excused">
-                    <span class="label">TOTAL NUMBER OF EXCUSED</span>
-                    <span class="value">${excusedCount}</span>
-                </div>
-            </div>
-            
-            <div class="footer">
-                <p>by VALMAtrack Attendance System | S.Y. 2025-2026</p>
-            </div>
-        </body>
-        </html>
-    `);
-    
-    printWindow.document.close();
-    
-    // Wait for content to load, then print
-    setTimeout(() => {
-        printWindow.print();
-    }, 250);
-}
 // ========================================
 // EXAMPLE: STREAK TESTING
 // ========================================
@@ -697,9 +547,4 @@ setTimeout(() => {
     setTimeout(() => updateStreakDisplay(60), 4000); // Purple
     setTimeout(() => updateStreakDisplay(80), 5000); // Violet
 }, 2000);
-
 */
-
-
-
-
