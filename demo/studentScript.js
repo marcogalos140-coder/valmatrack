@@ -242,9 +242,9 @@ style.textContent = `
 document.head.appendChild(style);
 
 function updateStatusCards() {
-    const onTime = 9;
-    const late = 0;
-    const absent = 0;
+    const onTime = 0;
+    const late = 1;
+    const absent = 25;
     const excused = 0;
 
     const onTimeEl = document.getElementById('onTimeCount');
@@ -549,5 +549,6 @@ setTimeout(() => {
     setTimeout(() => updateStreakDisplay(80), 5000); // Violet
 }, 2000);
 */
+
 
 
